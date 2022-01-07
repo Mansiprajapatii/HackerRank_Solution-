@@ -1,0 +1,61 @@
+/*Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.
+
+Example
+
+The minimum sum is  and the maximum sum is . The function prints
+
+16 24
+Function Description
+
+Complete the miniMaxSum function in the editor below.
+
+miniMaxSum has the following parameter(s):
+
+arr: an array of  integers
+Print
+
+Print two space-separated integers on one line: the minimum sum and the maximum sum of  of  elements.
+
+Input Format
+
+A single line of five space-separated integers.
+
+Constraints
+
+
+Output Format
+
+Print two space-separated long integers denoting the respective minimum and maximum values that can be calculated by summing exactly four of the five integers. (The output can be greater than a 32 bit integer.)
+*/
+
+//function to solve 
+
+void miniMaxSum(vector<int> arr) {
+ int count=1;   
+ int n=5;
+ long sum1=0,sum2=0;            //for  sorting
+    while(count<n){                     
+       for(int i=0; i<n-count; i++){    // shorting happens for n-count time
+           if(arr[i]>arr[i+1]){         // 45 > 23
+               int temp = arr[i];      // swap 23 45 
+               arr[i]= arr[i+1];
+               arr[i+1]=temp;
+           }
+       }
+       count++;
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+         sum1+=arr[i];
+
+    }
+    long min = sum1 - arr[0];
+    
+    long max = sum1 - arr[4];
+    
+    // for(int i=1; i<n ; i++){
+    //      sum2+=arr[i];
+    // }
+    cout<<max<<" "<<min<<endl;
+}
